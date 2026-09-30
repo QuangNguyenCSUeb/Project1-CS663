@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pose estimation | Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html">Introduction</a>
+  <a href="computer-vision.html" aria-current="page">Pose estimation</a>
+  <a href="dynamics.html">From movement to dynamics</a>
+  <a href="pressnet.html">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>Pose estimation</h1>
+  <p class="byline">How a computer turns video into a skeleton</p>
+
+  <audio controls src="audio/computer-vision.mp3">Narration for this page.</audio>
+
+  <h2>What a camera can and cannot observe</h2>
+  <p>Two words matter throughout this tutorial. <strong>Kinematics</strong> describes motion you can see: where the joints are and how they move. <strong>Dynamics</strong> describes what causes motion: muscle effort, loads, and the forces between the body and the ground. A camera captures the first. The research here asks whether the second can be inferred from it <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Human pose estimation</h2>
+  <p>Pose estimation software looks at each video frame, finds the body's joints, and links them into a skeleton. Deep neural networks took over this task from older methods, and later work extended it from flat 2D points to 3D skeletons. All of these methods learn joint positions and angles. None of them says anything about external forces or balance <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>OpenPose and the Body-25 skeleton</h2>
+  <p>PressNET's authors use OpenPose, which finds joints with Part Affinity Fields, a way of learning which joints belong together. Its Body-25 model reports 25 keypoints per person, and each keypoint comes with an x position, a y position, and a confidence score. Besides the usual shoulders, elbows, hips, knees, and ankles, it includes the heels and toes of both feet, which matters when the goal is foot pressure <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <figure>
+    <img src="images/fig2-body25.png" alt="Body-25 joint layout, a video frame with detected skeleton, and the matching foot-pressure maps">
+    <figcaption>Body-25 joints, detected skeletons, and measured foot pressure. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 2.</figcaption>
+  </figure>
+
+  <p>Detection is not perfect. In the authors' videos the eye and ear keypoints had zero confidence in more than half the frames, because the head was turned or hidden <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>From skeleton to network input</h2>
+  <p>Before the joints reach the network, they are shifted so the hip is the origin. That removes the effect of where the person stood in the frame. The confidence values are dropped, and the hip itself is removed since it is now always zero. That leaves 24 joints with 2 coordinates each, or 48 numbers per frame <a href="bibliography.html#ref1">[1]</a>.</p>
+  <p class="note">Next: <a href="dynamics.html">from movement to dynamics</a>.</p>
+</main>
+</body>
+</html>

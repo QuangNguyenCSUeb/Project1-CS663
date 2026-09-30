@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PressNET | Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html">Introduction</a>
+  <a href="computer-vision.html">Pose estimation</a>
+  <a href="dynamics.html">From movement to dynamics</a>
+  <a href="pressnet.html" aria-current="page">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>PressNET</h1>
+  <p class="byline">A neural network that predicts foot pressure from a skeleton</p>
+
+  <audio controls src="audio/pressnet.mp3">Narration for this page.</audio>
+
+  <figure>
+    <img src="images/fig1-pressnet.png" alt="PressNET overview: body joints go in, a foot pressure heatmap comes out">
+    <figcaption>PressNET overview. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 1.</figcaption>
+  </figure>
+
+  <h2>The data</h2>
+  <p>The researchers needed video and true foot pressure recorded at the same moment. Six people performed the 24-form Tai Chi routine, about five minutes each time, wearing pressure insoles while cameras filmed them. Three were professionals with 20 or more years of practice, and three were amateurs. The result was about 794,000 matched pairs of video frame and pressure map. Tai Chi was chosen because it is slow, needs no equipment, and still includes many different poses <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Input and output</h2>
+  <p>The input is the 48-number skeleton from the <a href="computer-vision.html">previous page</a>. The output is a 60 by 21 pressure image for each foot, with values scaled between 0 and 1 <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>How the network works</h2>
+  <p>The design borrows from image generators, because the network has to turn a short list of numbers into a picture. In order:</p>
+  <ol>
+    <li>A fully connected layer expands the 48 numbers into a tiny 4 by 3 image with 512 channels.</li>
+    <li>Four residual blocks enlarge that image step by step. Each block combines convolutions of different sizes with a fully connected path, and the channel count falls from 512 to 64 as the image grows.</li>
+    <li>Two branches finish the job. A convolutional branch keeps neighboring pixels consistent, and a fully connected branch looks at the whole foot at once. Their outputs are added together.</li>
+    <li>A foot-shaped mask zeroes out pixels outside the sole, so the network only learns pressure and not foot shape. A sigmoid squeezes the result into the 0 to 1 range.</li>
+  </ol>
+  <p>The whole network has roughly 3 million parameters <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Training</h2>
+  <p>The network is trained to minimize mean squared error using the Adam optimizer. The key design choice is leave-one-subject-out testing: each round trains on five people and tests on the sixth, so the score reflects how well it handles someone it has never seen <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>The baseline: nearest neighbor</h2>
+  <p>To judge PressNET, the authors compared it with a simple method. For each test pose, K-nearest-neighbors finds the most similar pose from the other five people and copies its pressure map. The reasoning is that similar poses should give similar pressure. It is easy to understand, but it has no way to adapt to differences between people <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Results</h2>
+  <p>PressNET's average error was 5.16 kPa against 11.6 kPa for the baseline, and the gap was statistically significant. For center of pressure, PressNET's error was about 10 mm per foot against about 60 mm for the baseline. Its predictions were also smooth from frame to frame, while the baseline's jumped around <a href="bibliography.html#ref1">[1]</a>. The <a href="results.html">next page</a> looks at what these numbers do and do not show.</p>
+  <p class="note">A follow-up paper adds a simpler network that uses only fully connected layers, plus base of support estimates <a href="bibliography.html#ref2">[2]</a>.</p>
+</main>
+</body>
+</html>

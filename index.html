@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html" aria-current="page">Introduction</a>
+  <a href="computer-vision.html">Pose estimation</a>
+  <a href="dynamics.html">From movement to dynamics</a>
+  <a href="pressnet.html">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>Estimating Foot Pressure from Human Pose</h1>
+  <p class="byline">Quang Nguyen &middot; CS 663 Project 1</p>
+
+  <audio controls src="audio/intro.mp3">Narration for this page.</audio>
+
+  <figure>
+    <div class="pressure" role="img" aria-label="Drawing of two feet with pressure shown from yellow (low) to red to brown (high), and a star marking the center of pressure">
+      <div class="foot"></div><div class="foot right"></div><span class="cop" aria-hidden="true">&#9733;</span>
+    </div>
+    <figcaption>Illustration only, not data from the papers. Yellow is low pressure, red is moderate, brown is high. The star marks the center of pressure.</figcaption>
+  </figure>
+
+  <p>A camera can show where an athlete's joints are. It cannot show how hard the feet press into the ground, and that pressure says a lot about balance. This tutorial explains a line of research from Penn State that predicts a foot-pressure map from a single video frame of a person's body pose <a href="bibliography.html#ref1">[1]</a><a href="bibliography.html#ref2">[2]</a>.</p>
+
+  <h2>What you will learn</h2>
+  <p>You will see how software finds a skeleton in video, why forces and pressure count as a different kind of information than position, how a neural network called PressNET links the two, and where the approach works and where it does not.</p>
+
+  <h2>How to use this site</h2>
+  <p>Read the pages in order, about 20 minutes in total. Each page has narration at the top. Numbers in brackets link to the annotated bibliography.</p>
+  <p class="note">Start with <a href="computer-vision.html">pose estimation</a>.</p>
+</main>
+</body>
+</html>

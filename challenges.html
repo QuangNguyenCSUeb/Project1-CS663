@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Challenges | Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html">Introduction</a>
+  <a href="computer-vision.html">Pose estimation</a>
+  <a href="dynamics.html">From movement to dynamics</a>
+  <a href="pressnet.html">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html" aria-current="page">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>Challenges</h1>
+  <p class="byline">Why this problem stays hard</p>
+
+  <audio controls src="audio/challenges.mp3">Narration for this page.</audio>
+
+  <h2>Challenges reported in the research</h2>
+  <ul>
+    <li><strong>Occlusion and missing joints.</strong> Body parts turned away from the camera, or blocked by clothing or another limb, lower the pose detector's confidence. The eye and ear keypoints were missing in more than half of the recorded frames <a href="bibliography.html#ref1">[1]</a>.</li>
+    <li><strong>Sensor noise.</strong> The pressure insoles used as ground truth carry roughly 3 kPa of noise and can clip very high readings, which puts a floor under how low the error can go <a href="bibliography.html#ref1">[1]</a><a href="bibliography.html#ref2">[2]</a>.</li>
+    <li><strong>Differences between people.</strong> Body mass, height, and foot shape all change how pressure spreads across the foot, even for people striking the same pose <a href="bibliography.html#ref2">[2]</a>.</li>
+    <li><strong>An ill-posed problem.</strong> The second paper states plainly that mapping pose to pressure does not have one guaranteed correct answer, since pose alone cannot fully determine the forces involved <a href="bibliography.html#ref2">[2]</a>.</li>
+    <li><strong>Single camera view.</strong> Both systems work from one 2D viewpoint rather than a multi-camera 3D setup, which limits how much body detail reaches the network <a href="bibliography.html#ref1">[1]</a><a href="bibliography.html#ref2">[2]</a>.</li>
+  </ul>
+
+  <h2>My own extensions to a sports setting</h2>
+  <p>These are reasonable concerns for applying this work to sports, but the papers themselves do not test them.</p>
+  <ul>
+    <li>Tai Chi is deliberately slow. Sprinting, jumping, or cutting movements are faster and could blur the pose or outrun the camera's frame rate.</li>
+    <li>A controlled lab with one camera angle is not the same as an outdoor field, a crowded court, or changing light.</li>
+    <li>Training on six to a few dozen people is small next to the range of body types across real athletes, so the network may not generalize well to a new sport or population without retraining.</li>
+  </ul>
+  <p class="note">Next: <a href="future.html">future work and conclusions</a>.</p>
+</main>
+</body>
+</html>

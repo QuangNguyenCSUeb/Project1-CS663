@@ -1,0 +1,26 @@
+:root{--paper:#f5f7f8;--ink:#16222b;--slate:#3c5566;--rule:#cfd9df;--yellow:#f2c14e;--red:#d2452b;--brown:#6b2e1f;--link:#1d5f8a}
+@media (prefers-color-scheme:dark){:root{--paper:#0f181f;--ink:#e6edf1;--slate:#9fb3c0;--rule:#2a3a45;--link:#7cc0ea}}
+*{box-sizing:border-box}
+html{scroll-padding-top:1rem}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.7 Georgia,"Iowan Old Style",serif;display:grid;grid-template-columns:15rem minmax(0,1fr);min-height:100vh}
+nav{position:sticky;top:0;align-self:start;height:100vh;padding:2rem 1.25rem;border-right:1px solid var(--rule);font:.95rem/1.4 system-ui,sans-serif}
+nav .site{font-weight:700;margin:0 0 1.5rem}
+nav a{display:block;padding:.4rem 0;color:var(--slate);text-decoration:none}
+nav a:hover{color:var(--ink)}
+nav a[aria-current=page]{color:var(--ink);font-weight:700;border-left:3px solid var(--red);padding-left:.6rem;margin-left:-.75rem}
+main{max-width:44rem;padding:2.5rem 2rem 4rem}
+h1{font:700 2.4rem/1.15 system-ui,sans-serif;margin:0 0 .5rem}
+h2{font:700 1.4rem/1.3 system-ui,sans-serif;margin:2.5rem 0 .5rem}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.byline{color:var(--slate);font-family:system-ui,sans-serif;margin:0 0 1.5rem}
+audio{width:100%;margin:0 0 1.5rem}
+figure{margin:1.5rem 0}
+figure img{max-width:100%;height:auto;border:1px solid var(--rule)}
+figcaption{font:.85rem/1.4 system-ui,sans-serif;color:var(--slate);margin-top:.4rem}
+.note{border-left:3px solid var(--yellow);padding:.1rem 1rem;color:var(--slate)}
+.pressure{display:flex;gap:1.5rem;justify-content:center;position:relative;margin:1.5rem 0 .5rem;padding:1.5rem;border:1px solid var(--rule)}
+.foot{width:84px;height:210px;border-radius:42px 42px 38px 38px/70px 70px 50px 50px;background:radial-gradient(ellipse at 50% 22%,var(--red) 0,transparent 42%),radial-gradient(ellipse at 50% 88%,var(--brown) 0,transparent 38%),var(--yellow)}
+.foot.right{transform:scaleX(-1)}
+.cop{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);font-size:1.6rem;color:#16222b;text-shadow:0 0 4px #fff}
+@media (max-width:800px){body{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);padding:1rem}main{padding:1.5rem 1.25rem 3rem}h1{font-size:1.9rem}}

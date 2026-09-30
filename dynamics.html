@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From movement to dynamics | Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html">Introduction</a>
+  <a href="computer-vision.html">Pose estimation</a>
+  <a href="dynamics.html" aria-current="page">From movement to dynamics</a>
+  <a href="pressnet.html">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>From movement to dynamics</h1>
+  <p class="byline">Foot pressure, balance, and three ideas that connect them</p>
+
+  <audio controls src="audio/dynamics.mp3">Narration for this page.</audio>
+
+  <h2>Foot pressure</h2>
+  <p>Foot pressure is how hard each part of the sole pushes on the ground, measured in kilopascals (kPa). Drawn as a heatmap, it shows whether weight sits on the heel, the ball of the foot, the toes, or the outer edge. Labs usually record it with force plates or pressure insoles worn inside the shoe <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Center of pressure</h2>
+  <p>The center of pressure (CoP) is the single point where the ground's push on the body effectively acts. You can compute it from a pressure map by averaging the positions of all pressure cells, weighting each by how much it carries. In biomechanics it is also called the zero moment point <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Center of mass and base of support</h2>
+  <p>The center of mass (CoM) is the balance point of the whole body, projected straight down onto the floor. The base of support (BoS) is the area the feet cover, plus the space between them. A person is generally stable when the CoM stays inside the BoS. If it drifts outside, gravity produces a turning force that nothing on the ground cancels, and the body starts to tip <a href="bibliography.html#ref1">[1]</a><a href="bibliography.html#ref2">[2]</a>.</p>
+
+  <figure>
+    <img src="images/fig7-stability.png" alt="Diagram of center of pressure, center of mass, and base of support on a foot pressure map">
+    <figcaption>CoP, CoM, and BoS. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 7.</figcaption>
+  </figure>
+
+  <h2>How posture relates to balance</h2>
+  <p>The distance between the CoP and the CoM is a known marker of stability, and a larger gap can mean the person is less steady. When someone stands still, a CoP that wanders around indicates postural sway, which is a standard way to judge balance. CoP paths can also reveal foot problems and show whether shoe inserts are helping <a href="bibliography.html#ref1">[1]</a>.</p>
+
+  <h2>Why athletes care</h2>
+  <p>Balance and weight transfer decide how well an athlete moves, cuts, lands, and stays injury-free. Both papers describe their goal in terms of health and biomechanics research, with sports as one possible application <a href="bibliography.html#ref2">[2]</a>. Connecting them to a specific sport is my own extension, not something the papers tested.</p>
+  <p class="note">Next: <a href="pressnet.html">PressNET</a>.</p>
+</main>
+</body>
+</html>
