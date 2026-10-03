@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav aria-label="Tutorial sections">
-  <p class="site">Foot Pressure from Pose</p>
+   <p class="site">Foot Pressure from Pose</p>
   <a href="index.html">Introduction</a>
   <a href="computer-vision.html">Pose estimation</a>
   <a href="dynamics.html">From movement to dynamics</a>
@@ -16,6 +16,7 @@
   <a href="results.html" aria-current="page">Successes and failures</a>
   <a href="challenges.html">Challenges</a>
   <a href="future.html">Future and conclusions</a>
+  <a href="quiz.html">Quiz</a>
   <a href="bibliography.html">Bibliography</a>
 </nav>
 <main>
@@ -28,14 +29,14 @@
   <p>PressNET beat the nearest-neighbor baseline on every measure the authors tracked. Average foot pressure error fell from 11.6 kPa to 5.16 kPa, and the gap was confirmed with a paired statistical test. That error is not far above the roughly 3 kPa of noise in the pressure sensors themselves, so much of the remaining gap may be measurement noise rather than a network mistake <a href="bibliography.html#ref1">[1]</a>.</p>
 
   <figure>
-    <img src="images/fig8-heatmaps.png" alt="Example frames comparing ground truth, PressNET, and nearest-neighbor foot pressure heatmaps">
+    <img src="images/figure8.png" alt="Example frames comparing ground truth, PressNET, and nearest-neighbor foot pressure heatmaps">
     <figcaption>Ground truth versus predicted heatmaps. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 8.</figcaption>
   </figure>
 
   <p>The center-of-pressure error told the same story: about 10 mm per foot for PressNET against about 60 mm for the baseline. PressNET's predictions also changed smoothly from one frame to the next, matching how a real person moves, while the baseline's predictions jumped between frames because it was free to pick a different match each time <a href="bibliography.html#ref1">[1]</a>.</p>
 
   <figure>
-    <img src="images/fig9-cop-error.png" alt="Scatter plots comparing center of pressure error for nearest-neighbor and PressNET">
+    <img src="images/figure9.png" alt="Scatter plots comparing center of pressure error for nearest-neighbor and PressNET">
     <figcaption>CoP error, baseline versus PressNET. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 9.</figcaption>
   </figure>
 
@@ -45,7 +46,7 @@
   <p>The clearest limit is that identical poses do not guarantee identical pressure. Two people striking the same pose can load their feet differently, so some prediction error can never be removed no matter how good the network is <a href="bibliography.html#ref1">[1]</a>.</p>
 
   <figure>
-    <img src="images/fig4b-same-pose.png" alt="The same starting pose produces different foot pressure across six subjects">
+    <img src="images/figure4b.png" alt="The same starting pose produces different foot pressure across six subjects">
     <figcaption>Same pose, six different pressure patterns. Source: Funk et al. <a href="bibliography.html#ref1">[1]</a>, Figure 4B.</figcaption>
   </figure>
 

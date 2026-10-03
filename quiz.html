@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz | Estimating Foot Pressure from Human Pose</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .card{border:1px solid var(--rule);padding:1.5rem;font-family:system-ui,sans-serif}
+  .opt{display:block;width:100%;text-align:left;margin:.5rem 0;padding:.7rem 1rem;border:1px solid var(--rule);background:transparent;color:var(--ink);font:1rem/1.4 system-ui,sans-serif;cursor:pointer;border-radius:.4rem}
+  .opt:hover{border-color:var(--link)}
+  .opt.correct{border-color:#2e7d46;background:rgba(46,125,70,.12)}
+  .opt.wrong{border-color:var(--red);background:rgba(210,69,43,.12)}
+  .opt[disabled]{cursor:default}
+  #fb{font-weight:700;margin:1rem 0 0;min-height:1.4em}
+  #next{margin-top:1rem;padding:.6rem 1.2rem;border:1px solid var(--ink);background:transparent;color:var(--ink);font:700 .95rem system-ui,sans-serif;border-radius:.4rem;cursor:pointer;display:none}
+  #progress{font:.9rem system-ui,sans-serif;color:var(--slate);margin-bottom:.75rem}
+  #score{font:700 1.3rem system-ui,sans-serif;text-align:center;padding:2rem 0}
+</style>
+</head>
+<body>
+<nav aria-label="Tutorial sections">
+  <p class="site">Foot Pressure from Pose</p>
+  <a href="index.html">Introduction</a>
+  <a href="computer-vision.html">Pose estimation</a>
+  <a href="dynamics.html">From movement to dynamics</a>
+  <a href="pressnet.html">PressNET</a>
+  <a href="results.html">Successes and failures</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="future.html">Future and conclusions</a>
+  <a href="quiz.html" aria-current="page">Quiz</a>
+  <a href="bibliography.html">Bibliography</a>
+</nav>
+<main>
+  <h1>Check your understanding</h1>
+  <p class="byline">5 questions covering every page of this tutorial</p>
+
+  <div class="card">
+    <div id="progress"></div>
+    <div id="quiz"></div>
+    <div id="score"></div>
+    <div id="fb"></div>
+    <button id="next">Next question &rarr;</button>
+  </div>
+</main>
+
+<script>
+const Q = [
+  {
+    q: "What can a camera directly observe about an athlete?",
+    opts: ["Muscle force and effort", "Joint positions (kinematics)", "Foot pressure in kilopascals", "Center of pressure"],
+    correct: 1,
+    why: "A camera captures kinematics \u2014 where the joints are and how they move. Dynamics, like force and pressure, has to be inferred."
+  },
+  {
+    q: "In OpenPose's Body-25 model, why do foot keypoints (heel, toes) matter for this research?",
+    opts: [
+      "They make the skeleton look more complete",
+      "They are needed to predict foot pressure specifically",
+      "They replace the need for a camera",
+      "They are the most reliably detected joints"
+    ],
+    correct: 1,
+    why: "Since the goal is predicting foot pressure, keypoints on the feet give the network the most directly relevant input."
+  },
+  {
+    q: "A person is generally considered stable when:",
+    opts: [
+      "The center of pressure equals the base of support",
+      "The center of mass stays inside the base of support",
+      "The foot pressure reaches zero",
+      "The center of mass and center of pressure are far apart"
+    ],
+    correct: 1,
+    why: "If the center of mass moves outside the base of support, gravity creates an uncancelled turning force and the body starts to tip."
+  },
+  {
+    q: "How did PressNET compare to the K-nearest-neighbor baseline?",
+    opts: [
+      "It performed about the same",
+      "It performed worse but was faster",
+      "It roughly halved the average pressure error",
+      "It could not be tested against a baseline"
+    ],
+    correct: 2,
+    why: "PressNET's mean error was about 5.16 kPa versus about 11.6 kPa for the KNN baseline, confirmed with a statistical test."
+  },
+  {
+    q: "What is the biggest reason these results might not carry over to real sports directly?",
+    opts: [
+      "The network has too few parameters",
+      "OpenPose cannot detect any joints",
+      "Training data came from a few people doing one slow activity indoors",
+      "Pressure insoles do not exist"
+    ],
+    correct: 2,
+    why: "Both studies used a small number of subjects performing one controlled, slow activity (Tai Chi) in a lab, so fast athletic movement is untested."
+  }
+];
+
+let i = 0, score = 0;
+const quizEl = document.getElementById('quiz');
+const fbEl = document.getElementById('fb');
+const nextBtn = document.getElementById('next');
+const progEl = document.getElementById('progress');
+const scoreEl = document.getElementById('score');
+
+function render(){
+  fbEl.textContent = '';
+  nextBtn.style.display = 'none';
+  if(i >= Q.length){
+    progEl.textContent = '';
+    quizEl.innerHTML = '';
+    scoreEl.textContent = `You scored ${score} out of ${Q.length}.`;
+    return;
+  }
+  progEl.textContent = `Question ${i+1} of ${Q.length}`;
+  const item = Q[i];
+  quizEl.innerHTML = `<p style="font-weight:700;margin-top:0">${item.q}</p>` +
+    item.opts.map((o,idx)=>`<button class="opt" data-idx="${idx}">${o}</button>`).join('');
+  quizEl.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      quizEl.querySelectorAll('.opt').forEach(b=>b.disabled = true);
+      const idx = Number(btn.dataset.idx);
+      if(idx === item.correct){
+        btn.classList.add('correct');
+        fbEl.textContent = 'Correct. ' + item.why;
+        score++;
+      } else {
+        btn.classList.add('wrong');
+        quizEl.querySelector(`[data-idx="${item.correct}"]`).classList.add('correct');
+        fbEl.textContent = 'Not quite. ' + item.why;
+      }
+      nextBtn.style.display = 'inline-block';
+    });
+  });
+}
+nextBtn.addEventListener('click', ()=>{ i++; render(); });
+render();
+</script>
+</body>
+</html>
