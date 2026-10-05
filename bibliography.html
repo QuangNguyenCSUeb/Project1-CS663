@@ -40,29 +40,6 @@
     <p><strong>Reliability:</strong> High. Same authors and lab as [1], larger dataset, and consistent methodology, though also an arXiv preprint.</p>
   </article>
 
-  <article id="ref3">
-    <h2>[3] Morris et al., 2021 — ground reaction force in sidestepping</h2>
-    <p><strong>Full citation:</strong> Corey Morris, Marion Mundt, Molly Goldacre, Jason Weber, Ajmal Mian, and Jacqueline Alderson. 2021. Predicting 3D Ground Reaction Force from 2D Video via Neural Networks in Sidestepping Tasks. <em>ISBS Proceedings Archive</em> 39, 1 (2021), Article 77.</p>
-    <p><strong>Synopsis:</strong> Applies the same pose-to-force idea directly to an athletic movement, sidestepping, instead of Tai Chi. Trains neural networks on 14 participants to predict 3D ground reaction force from 2D video pose, reaching correlation coefficients up to 0.954. Used in the Future section as evidence the same approach already extends to sports movement.</p>
-    <span class="tag">Peer-reviewed conference</span>
-    <p><strong>Reliability:</strong> High. Published through the International Society of Biomechanics in Sports, a recognized sports-science conference.</p>
-  </article>
-
-  <article id="ref4">
-    <h2>[4] Louis et al., 2022 — external forces via transformer</h2>
-    <p><strong>Full citation:</strong> Nathan Louis, Jason J. Corso, Tylan N. Templin, Travis D. Eliason, and Daniel P. Nicolella. 2022. Learning to Estimate External Forces of Human Motion in Video. In <em>Proceedings of the 30th ACM International Conference on Multimedia (ACMMM '22)</em>. ACM.</p>
-    <p><strong>Synopsis:</strong> Frames ground-reaction-force estimation explicitly around sports performance and injury prevention, and is the first to use a transformer for this task instead of a CNN or LSTM. Also shows that pre-training on 2D-to-3D pose estimation improves how well the force model generalizes to new movements. Used in the Future section to show the field moving past PressNET's original architecture.</p>
-    <span class="tag">Peer-reviewed conference</span>
-    <p><strong>Reliability:</strong> High. Published at ACM Multimedia, a major, competitive, peer-reviewed venue.</p>
-  </article>
-
-  <article id="ref5">
-    <h2>[5] Koleini et al., 2025 — BioPose</h2>
-    <p><strong>Full citation:</strong> Farnoosh Koleini, Muhammad Usama Saleem, Pu Wang, Hongfei Xue, Ahmed Helmy, and Abbey Fenwick. 2025. BioPose: Biomechanically-Accurate 3D Pose Estimation from Monocular Videos. In <em>Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</em>.</p>
-    <p><strong>Synopsis:</strong> Improves the accuracy of the 3D pose estimation step itself by adding biomechanical corrections, rather than working on force or pressure prediction. Relevant because pose accuracy is an upstream bottleneck: any error in the joint positions carries forward into a system like PressNET. Used in the Challenges section to support the pose-accuracy limitation.</p>
-    <span class="tag">Peer-reviewed conference</span>
-    <p><strong>Reliability:</strong> High. Published at WACV, a well-regarded IEEE/CVF computer vision conference.</p>
-  </article>
 </main>
 </body>
 </html>
