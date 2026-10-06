@@ -5,7 +5,7 @@ A tutorial exploring how computer vision can estimate foot pressure and balance-
 
 # Website URL: https://quangnguyencsueb.github.io/Project1-CS663/
 
-# Youtube URL: https://youtu.be/8rANFeyJrfM?si=5tA6CmIJPQFH87zK
+# Youtube URL: [https://youtu.be/8rANFeyJrfM?si=5tA6CmIJPQFH87zK](https://www.youtube.com/watch?v=uK_cQqU_cSU)
 
 ## Site structure
 
