@@ -30,6 +30,10 @@ A tutorial exploring how computer vision can estimate foot pressure and balance-
    & Liu, Y. (2020). *From Kinematics to Dynamics: Estimating Center of
    Pressure and Base of Support from Video Frames of Human Motion.*
    arXiv:2001.00657.
+3. Morris, Mundt, Goldacre, Weber, Mian, Alderson. 2021. Predicting 3D Ground Reaction Force from 2D Video via Neural Networks in Sidestepping Tasks. ISBS Proceedings Archive 39(1) 
+4. Louis, Corso, Templin, Eliason, Nicolella. 2022. Learning to Estimate External Forces of Human Motion in Video. ACM Multimedia (ACMMM '22)
+5. Koleini, Saleem, Wang, Xue, Helmy, Fenwick. 2025. BioPose: Biomechanically-Accurate 3D Pose Estimation from Monocular Videos. WACV 
+
 
 ## Built with
 
