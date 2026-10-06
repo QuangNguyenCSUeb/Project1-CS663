@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav aria-label="Tutorial sections">
-   <p class="site">Foot Pressure from Pose</p>
+  <p class="site">Foot Pressure from Pose</p>
   <a href="index.html">Introduction</a>
   <a href="computer-vision.html">Pose estimation</a>
   <a href="dynamics.html">From movement to dynamics</a>
@@ -32,6 +32,7 @@
     <li><strong>Differences between people.</strong> Body mass, height, and foot shape all change how pressure spreads across the foot, even for people striking the same pose <a href="bibliography.html#ref2">[2]</a>.</li>
     <li><strong>An ill-posed problem.</strong> The second paper states plainly that mapping pose to pressure does not have one guaranteed correct answer, since pose alone cannot fully determine the forces involved <a href="bibliography.html#ref2">[2]</a>.</li>
     <li><strong>Single camera view.</strong> Both systems work from one 2D viewpoint rather than a multi-camera 3D setup, which limits how much body detail reaches the network <a href="bibliography.html#ref1">[1]</a><a href="bibliography.html#ref2">[2]</a>.</li>
+    <li><strong>Pose accuracy is an upstream bottleneck.</strong> Since PressNET's input is a pose skeleton, any error in that skeleton carries forward into the pressure prediction. More recent work applies biomechanical corrections to improve 3D pose accuracy itself, separate from the pressure-prediction step <a href="bibliography.html#ref5">[5]</a>.</li>
   </ul>
 
   <h2>My own extensions to a sports setting</h2>
