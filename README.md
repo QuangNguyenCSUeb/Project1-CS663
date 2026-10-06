@@ -1,5 +1,5 @@
 # Project1-CS663
-#Estimating Foot Pressure from Human Pose
+# Estimating Foot Pressure from Human Pose
 ## Overview
 A tutorial exploring how computer vision can estimate foot pressure and balance-related measurements (Center of Pressure, Center of Mass, Base of Support) directly from human pose, without wearable sensors. Covers pose estimation (OpenPose Body-25), the PressNET deep learning model, its result against K-nearest-neighbor baseline, limitations, and possible application to sports.
 
